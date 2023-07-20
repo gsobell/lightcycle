@@ -98,16 +98,26 @@ def adjacent(cell):
     return [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]
 
 
+# def dead_end(cell, visited, n = 40):
+#     """When faced with one lane tunnel, looks n spaces
+#     to see if dead end"""
+#     a = [a for a in adjacent(cell) if a not in visited]
+#     if not a:
+#         return True
+#     elif len(a) == 1:
+#         visitedp = visited + a
+#         dead_end(*a, visitedp)
+#     else:
+#         return False
+
+
 def genmove1(program, program_dir, user, visited):
+    """Use taxicab geometry to close distance on user"""
     adj = adjacent(program)
     moves = []
     for i, a in enumerate(adj):
         if is_valid(a, visited):
-            if DIRECTIONS[i] == program_dir:
-                moves.append(DIRECTIONS[i])
-            else:
-                if is_valid(adjacent(a)[i], visited):
-                    moves.append(DIRECTIONS[i])
+            moves.append(DIRECTIONS[i])
     # Calculate the differences in coordinates between AI and user
     diff = (user[0] - program[0], user[1] - program[1])
     # Check if the user is above or below the AI
@@ -135,7 +145,6 @@ def genmove1(program, program_dir, user, visited):
             if curses.KEY_LEFT in moves:
                 return curses.KEY_LEFT
         else:
-            # Move up or down to avoid getting stuck
             if program_dir != curses.KEY_UP:
                 if curses.KEY_DOWN in moves:
                     return curses.KEY_DOWN
@@ -153,11 +162,12 @@ def genmove(program, program_dir, user, visited):
     moves = []
     for i, a in enumerate(adj):
         if is_valid(a, visited):
-            if DIRECTIONS[i] == program_dir:
-                moves.append(DIRECTIONS[i])
-            else:
-                if is_valid(adjacent(a)[i], visited):
-                    moves.append(DIRECTIONS[i])
+            # if DIRECTIONS[i] == program_dir:
+                # if is_valid(adjacent(a)[i], visited):
+            moves.append(DIRECTIONS[i])
+            # else:
+                # if is_valid(adjacent(a)[i], visited):
+                    # moves.append(DIRECTIONS[i])
     if moves:
         return program_dir if program_dir in moves else choice(moves)
     else:

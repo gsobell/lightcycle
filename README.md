@@ -8,6 +8,8 @@ The grid, in your terminal.
 
 A classic Tron game, for your terminal. Square off against either CLU or Rinzler. Fight for the Users!
 
+[![asciicast](https://asciinema.org/a/Mahki4Zd7bzymsZLmmmqJX3mj.svg)](https://asciinema.org/a/Mahki4Zd7bzymsZLmmmqJX3mj)
+
 ## Features
 - User defined bike color
 - Variable speed
@@ -19,7 +21,7 @@ Use `enter` to select menu items.
 Running into the walls or a light ribbon ends the round.
 
 ## Installation
-To play without installing:
+To play without downloading:
 ```shell
 python <(curl -s https://raw.githubusercontent.com/gsobell/lightcycle/main/lightcycle.py)
 ```
@@ -33,4 +35,4 @@ mv lightcycle.py lightcycle && chmod +x lightcycle
 Also available for **ENCOM** OS-12.
 
 ---
-This program was written in a single day. Inspired by Kevin Flynn's original _Tron_ game.
+Inspired by Kevin Flynn's original _Tron_ game.
